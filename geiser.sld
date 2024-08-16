@@ -1,0 +1,18 @@
+(define-library (geiser)
+  (export geiser:eval)
+  (import (scheme base)
+          (scheme read)
+          (scheme write)
+          (scheme eval)
+          (scheme repl)
+  (begin
+    (define (geiser:eval module form . rest)
+      (let* ((output (open-output-string))
+             (formatted-output (open-output-string))
+             (result (parameterize ((current-output-port output))
+                       (eval form))))
+        (write
+         `((result ,(get-output-string result))
+           (output . ,(get-output-string output)))
+         formatted-output)
+        (write-to-ws (get-output-string formatted-output)))))
