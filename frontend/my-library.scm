@@ -1,0 +1,10 @@
+(define-library (my-library)
+  (export greet foo)
+  (import (scheme base)
+          (scheme write))
+  (begin
+    (define (foo) "Hello, foo!")
+    (define (greet name)
+      (display "Hello, ")
+      (display name)
+      (newline))))

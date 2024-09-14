@@ -26,12 +26,15 @@ console.log('WebSocket server listening on port 1338')
 // Store the current TCP client
 let tcpClient = null
 
+//let prompt = 'scheme@(guile-user)> '
+let prompt = '> '
+
 // Create the TCP server
 const server = net.createServer(socket => {
   console.log('TCP Client connected')
   tcpClient = socket
 
-  tcpClient.write('> ')
+  tcpClient.write(prompt)
 
   // Set encoding for the socket
   socket.setEncoding('utf8')
@@ -69,11 +72,11 @@ server.listen(1337, () => {
 // Event handler for incoming messages from WebSocket client
 wss.on('connection', ws => {
   ws.on('message', message => {
-    console.log('Received from WebSocket client:', message)
+    console.log('Received from WebSocket client:', message.toString('utf8'))
 
     // Send the result back to the TCP client
     if (tcpClient) {
-      tcpClient.write(message + '\n' + '> ')
+      tcpClient.write(message + '\n' + prompt)
     } else {
       console.error('No TCP client connected')
     }
