@@ -1,4 +1,4 @@
-(define-library (geiser)
+(define-library (repl geiser)
   (import (scheme base)
           (scheme write)
           (hoot eval)

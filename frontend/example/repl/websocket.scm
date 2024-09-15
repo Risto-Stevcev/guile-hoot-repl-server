@@ -1,4 +1,4 @@
-(define-library (websocket)
+(define-library (repl websocket)
   (import (scheme base)
           (hoot ffi))
   (export make-websocket! ws-on-message! ws-on-open! ws-send! event-data)

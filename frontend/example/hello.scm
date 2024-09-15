@@ -3,8 +3,8 @@
         (scheme read)
         [only [hoot ffi] procedure->external]
         (hoot eval)
-        (geiser)
-        (websocket))
+        (repl geiser)
+        (repl websocket))
 
 (define ws (make-websocket! "ws://localhost:1338"))
 

@@ -1,6 +1,6 @@
 modules = \
-	websocket.scm \
-	geiser.scm \
+	repl/websocket.scm \
+	repl/geiser.scm \
 	my-library.scm
 
 hello.wasm: hello.scm $(modules)
